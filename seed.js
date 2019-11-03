@@ -41,7 +41,6 @@ const main = async () => {
       await Promise.all(promises);
       promises.length = 0;
       console.log(`locations written: ${i}`);
-      break;
     }
   }
   await Promise.all(promises);
