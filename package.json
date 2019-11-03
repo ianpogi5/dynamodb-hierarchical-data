@@ -7,7 +7,7 @@
     "setup": "mkdir -p .dbdata && npm run ddb:start && npm run ddb:wait && npm run ddb:init",
     "ddb:start": "docker-compose up -d",
     "ddb:wait": "until nc -z localhost 9101; do sleep 1; done && echo \"DynamoDB started\"",
-    "ddb:init": "aws dynamodb create-table --cli-input-json file://schema.json --endpoint-url http://localhost:9101 --output text --query 'Table.TableName'",
+    "ddb:init": "./create_table.js",
     "ddb:stop": "docker-compose stop",
     "ddb:rm": "docker-compose rm"
   },
