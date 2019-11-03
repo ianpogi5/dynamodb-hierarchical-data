@@ -1,0 +1,49 @@
+{
+  "TableName": "starbucks",
+  "AttributeDefinitions": [
+    {
+      "AttributeName": "Country",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "StateCityPostcode",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "StoreNumber",
+      "AttributeType": "S"
+    }
+  ],
+  "KeySchema": [
+    {
+      "AttributeName": "StoreNumber",
+      "KeyType": "HASH"
+    }
+  ],
+  "ProvisionedThroughput": {
+    "ReadCapacityUnits": 100,
+    "WriteCapacityUnits": 100
+  },
+  "GlobalSecondaryIndexes": [
+    {
+      "IndexName": "StoreLocationIndex",
+      "KeySchema": [
+        {
+          "AttributeName": "Country",
+          "KeyType": "HASH"
+        },
+        {
+          "AttributeName": "StateCityPostcode",
+          "KeyType": "RANGE"
+        }
+      ],
+      "Projection": {
+        "ProjectionType": "ALL"
+      },
+      "ProvisionedThroughput": {
+        "ReadCapacityUnits": 100,
+        "WriteCapacityUnits": 100
+      }
+    }
+  ]
+}
